@@ -6,7 +6,9 @@
 trigger:
 - '*'
 
-pool: Billing
+pool:
+  name : Billing
+
 
 variables:
   buildConfiguration: 'Release'
