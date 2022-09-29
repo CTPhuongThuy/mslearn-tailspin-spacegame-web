@@ -7,8 +7,9 @@ trigger:
 - '*'
 
 pool:
-  name : Billing
-
+  vmImage: 'ubuntu-20.04'
+  demands:
+  - npm
 
 variables:
   buildConfiguration: 'Release'
