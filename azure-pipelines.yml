@@ -75,6 +75,14 @@ steps:
     custom: tool
     arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
 
+- task: NuGetCommand@2
+  displayName: 'Restore project dependencies'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
+
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
   inputs:
